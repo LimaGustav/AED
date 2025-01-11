@@ -1,0 +1,3 @@
+﻿  GerenciamentoCursos.c
+C:\Users\OLIMPIADA2024\Desktop\AED\GerenciamentoCursos\GerenciamentoCursos.c(203,33): warning C4098: 'atualizarStatusAluno': 'void' function returning a value
+  GerenciamentoCursos.vcxproj -> C:\Users\OLIMPIADA2024\Desktop\AED\GerenciamentoCursos\x64\Debug\GerenciamentoCursos.exe
