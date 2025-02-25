@@ -1,0 +1,6 @@
+﻿  MatrizPonderado.c
+C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixPonderado\MatrizPonderado.c(124,12): warning C4101: 'y': unreferenced local variable
+C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixPonderado\MatrizPonderado.c(124,9): warning C4101: 'x': unreferenced local variable
+C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixPonderado\MatrizPonderado.c(139,9): warning C4101: 'x': unreferenced local variable
+C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixPonderado\MatrizPonderado.c(150,9): warning C4101: 'x': unreferenced local variable
+  MatrixPonderado.vcxproj -> C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\x64\Debug\MatrizPonderado.exe

@@ -5,6 +5,11 @@
 #include <stdlib.h>
 
 #define MAX 50
+#define true 1
+#define false 0
+
+typedef int bool;
+
 
 typedef struct {
 	int chave;
@@ -40,11 +45,11 @@ int BuscarElemento(LISTA* l, int elemento)
 
 }
 // Inserir elementos na estrutura
-void InserirElemento(LISTA * l, int elemento) {
-	if (l->nroElem == MAX) return;
+bool inserirElemList(LISTA * l, REGISTRO reg,int i) {
+	if (l->nroElem == MAX) return false;
 
 	//l->A[l->nroElem] = elemento;
-
+	return true;
 }
 // Excluir elementos da estrutura
 

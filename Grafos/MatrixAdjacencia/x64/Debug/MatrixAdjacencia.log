@@ -1,0 +1,6 @@
+﻿  MatrixAdjacencia.c
+C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\MatrixAdjacencia.c(117,12): warning C4101: 'y': unreferenced local variable
+C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\MatrixAdjacencia.c(117,9): warning C4101: 'x': unreferenced local variable
+C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\MatrixAdjacencia.c(132,9): warning C4101: 'x': unreferenced local variable
+C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\MatrixAdjacencia.c(143,9): warning C4101: 'x': unreferenced local variable
+  MatrixAdjacencia.vcxproj -> C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\x64\Debug\MatrixAdjacencia.exe
