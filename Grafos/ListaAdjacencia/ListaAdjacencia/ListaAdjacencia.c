@@ -70,7 +70,22 @@ bool liberaGrafo(Grafo* g) {
     g->A = NULL; 
 }
 bool insereArestaAux(Grafo* g, int v1, int v2) {
+    ElemLista* novo, * ant = NULL;
+    ElemLista* atual = g->A[v1];
 
+    while (atual && atual->vertice<v2)
+    {
+        ant = atual;
+        atual = atual->prox;
+    }
+    if (atual && atual->vertice == v2) return false;
+    novo = (ElemLista*)malloc(sizeof(ElemLista));
+    novo->vertice = v2;
+    novo->prox = atual;
+
+    if (ant) ant->prox = novo;
+    else g->A[v1] = novo;
+    return true;
 }
 
 bool insereAresta(Grafo* g, int v1, int v2) {
@@ -82,9 +97,77 @@ bool insereAresta(Grafo* g, int v1, int v2) {
 
     if (insereArestaAux(g, v1, v2)) {
         insereArestaAux(g, v2, v1);
+        g->numArestas++;
     }
+
 }
 
+bool removeArestaAux(Grafo* g, int v1, int v2) {
+
+    ElemLista* ant = NULL;
+    ElemLista* atual = g->A[v1];
+    while (atual && atual->vertice < v2)
+    {
+        ant = atual;
+        atual = atual->prox;
+    }
+    if (atual && atual->vertice == v2) {
+        if (ant) ant->prox = atual->prox;
+        else g->A[v1] = atual->prox;
+        free(atual);
+        return true;
+    }
+    return false;
+}
+
+bool removeAresta(Grafo* g, int v1, int v2) {
+    if (!g || v1 < 0 || v2 < 0 || v1 >= g->numVertices || v2 >= g->numVertices) return false;
+    if (removeArestaAux(g, v1, v2)) {
+        removeArestaAux(g, v2, v1);
+        return true;
+    }
+    return false;
+}
+
+bool arestaExiste(Grafo* g, int v1, int v2) {
+    if (!g || v1 < 0 || v2 < 0 || v1 >= g->numVertices || v2 >= g->numVertices) return false;
+
+    ElemLista* atual = g->A[v1];
+    while (atual && atual->vertice < v2)
+    {
+        atual = atual->prox;
+    }
+    if (atual->vertice == v2)
+        return true;
+    return false;
+
+}
+
+int numeroDeVertices(Grafo* g) {
+    if (g) return g->numVertices;
+    return -1;
+}
+
+int possuiVizinhos(Grafo* g, int v) {
+    if (!g || v < 0 || v >= g->numVertices )return false;
+    if (!g->A[v]) return false;
+
+    return true;
+
+}
+
+int retornaGrauDoVertice(Grafo* g, int v) {
+    if(!g || v < 0 || v >= g->numVertices) return -1;
+
+    int grau = 0;
+    ElemLista* atual;
+    atual = g->A[v];
+    while (atual) {
+        grau++;
+        atual = atual->prox;
+    }
+    return grau;
+}
 int main()
 {
     int opcao = 0;
