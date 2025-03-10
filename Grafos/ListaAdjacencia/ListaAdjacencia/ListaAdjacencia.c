@@ -149,7 +149,7 @@ int numeroDeVertices(Grafo* g) {
 }
 
 int possuiVizinhos(Grafo* g, int v) {
-    if (!g || v < 0 || v >= g->numVertices )return false;
+    if (!g || v < 0 || v >= g->numVertices)return false;
     if (!g->A[v]) return false;
 
     return true;
@@ -157,7 +157,7 @@ int possuiVizinhos(Grafo* g, int v) {
 }
 
 int retornaGrauDoVertice(Grafo* g, int v) {
-    if(!g || v < 0 || v >= g->numVertices) return -1;
+    if (!g || v < 0 || v >= g->numVertices) return -1;
 
     int grau = 0;
     ElemLista* atual;
@@ -168,6 +168,9 @@ int retornaGrauDoVertice(Grafo* g, int v) {
     }
     return grau;
 }
+
+
+
 int main()
 {
     int opcao = 0;

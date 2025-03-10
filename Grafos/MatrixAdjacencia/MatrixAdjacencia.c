@@ -7,6 +7,10 @@
 #define true 1
 #define false 0
 
+#define Branco 0
+#define Cinza 1
+#define Preto 2
+
 typedef int bool;
 typedef struct {
     int numVertices;
@@ -149,6 +153,49 @@ bool retornaGrauDoVertice(Grafo* g, int v) {
 
     return grau;
 }
+void visitaEmProfundidade(Grafo* g, int atual, bool* visitado, int anterior) {
+    printf("Visitando vertice: %3i (anterior: %3i)\n", atual, anterior);
+
+    visitado[atual] = true;
+    int x;
+    for (x = 0; x < g->numVertices; x++) {
+        if (g->matriz[atual][x] && !visitado[x])
+            visitaEmProfundidade(g, x, visitado, atual);
+    }
+}
+
+
+
+void buscaProfundidade(Grafo* g) {
+    if (!g || g->numVertices< 1) return;
+    int x;
+    bool* visitado = (bool*)malloc(sizeof(bool) * g->numVertices);
+    for (x = 0;x< g->numVertices;x++) visitado[x] = false;
+
+    for (x = 0;x< g->numVertices;x++) {
+        if (visitado[x] == false)
+            visitaEmProfundidade(g, x, visitado, -1);
+    }
+    free(visitado);
+}
+
+void buscaProfundidadeCores(Grafo* g) {
+    if (!g || g->numVertices < 1) return;
+    int* cor = (int)malloc(sizeof(int) * g->numVertices);
+    int* tDescoberta = (int)malloc(sizeof(int) * g->numVertices);
+    int* tTermino = (int)malloc(sizeof(int) * g->numVertices);
+    int* anterior = (int)malloc(sizeof(int) * g->numVertices);
+    int* tempo = (int)malloc(sizeof(int));
+    *tempo = 0;
+
+    int x;
+    for (int x = 0; x < g->numVertices; x++)
+    {
+        cor[x] = Branco;
+        tTermino[x] = anterior[x] = tDescoberta[x] = -1;
+    }
+
+}
 
 int main()
 {
@@ -161,6 +208,7 @@ int main()
         printf("1: Exibir Grafo\n");
         printf("2: Inserir Aresta\n");
         printf("3: Remover Aresta\n");
+        printf("4: Busca em Profundidade\n");
         printf("10: Encerra\n");
 
         scanf_s("%d", &opcao);
@@ -186,7 +234,10 @@ int main()
             scanf_s("%d", &v2);
             removeAresta(g, v1, v2);
         }
-
+        if (opcao == 4) 
+        {
+            buscaProfundidade(g);
+        }
         
     }
 }
