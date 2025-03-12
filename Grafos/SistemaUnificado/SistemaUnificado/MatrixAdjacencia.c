@@ -9,7 +9,8 @@
 #define Cinza 1
 #define Preto 2
 
-bool inicializaGrafo(Grafo* g, int vertices) {
+
+bool inicializaGrafoMatriz(GrafoMatriz* g, int vertices,float invalido) {
     if (g == NULL || vertices < 1) return false;
     g->numVertices = vertices;
     g->numArestas = 0;
@@ -18,12 +19,12 @@ bool inicializaGrafo(Grafo* g, int vertices) {
     for (x = 0; x < vertices;x++) {
         g->matriz[x] = (bool*)malloc(sizeof(bool) * vertices);
         for (y = 0;y < vertices;y++)
-            g->matriz[x][y] = false;
+            g->matriz[x][y] = invalido;
     }
     return true;
 }
 
-bool exibeGrafo(Grafo* g) {
+bool exibeGrafoMatriz(GrafoMatriz* g) {
     if (g == NULL) return false;
 
     int x, y;
@@ -34,14 +35,14 @@ bool exibeGrafo(Grafo* g) {
     for (x = 0;x < g->numVertices;x++) {
         printf("%i", x);
         for (y = 0;y < g->numVertices;y++)
-            printf("\t%5i", g->matriz[x][y]);
+            printf("\t%5.1f", g->matriz[x][y]);
         printf("\n");
     }
 
     return true;
 }
 
-bool liberaGrafto(Grafo* g) {
+bool liberaGraftoMatriz(GrafoMatriz* g) {
     if (g == NULL) return false;
 
     int x;
@@ -54,9 +55,9 @@ bool liberaGrafto(Grafo* g) {
     return true;
 }
 
-bool insereAresta(Grafo* g, int v1, int v2) {
+bool insereArestaMatriz(GrafoMatriz* g, int v1, int v2) {
     if (g == NULL) return false;
-    if (v1 < 0 || v2 < 0 || v1 >= g->numVertices || v2 >= g->numVertices) return false;
+    if (v1 < 0 || v2 < 0 || v1 >= g->numVertices || v2 >= g->numVertices || v1 == v2) return false;
 
 
     if (g->matriz[v1][v2] == true) {
@@ -74,22 +75,87 @@ bool insereAresta(Grafo* g, int v1, int v2) {
     return true;
 }
 
-bool removeAresta(Grafo* g, int v1, int v2) {
+bool insereArestaDirigidoMatriz(GrafoMatriz* g, int v1, int v2) {
+    if (g == NULL) return false;
+    if (v1 < 0 || v2 < 0 || v1 >= g->numVertices || v2 >= g->numVertices) return false;
+
+
+    if (g->matriz[v1][v2] == true) {
+        printf("Essa aresta já existe");
+        return false;
+    }
+
+    g->matriz[v1][v2] = true;
+
+
+    g->numArestas++;
+    return true;
+}
+
+bool insereArestaPonderadoMatriz(GrafoMatriz* g, int v1, int v2, float peso) {
+    if (g == NULL) return false;
+    if (v1 < 0 || v2 < 0 || v1 >= g->numVertices || v2 >= g->numVertices || v1 == v2) return false;
+
+
+    if (g->matriz[v1][v2] == true) {
+        printf("Essa aresta já existe");
+        return false;
+    }
+
+    // Grafo não direcionado
+    g->matriz[v1][v2] = peso;
+
+    // Caso o grafo seja direcionado não adiciona essa linha
+    g->matriz[v2][v1] = peso;
+
+    g->numArestas++;
+    return true;
+}
+
+bool insereArestaDirigidoPonderadoMatriz(GrafoMatriz* g, int v1, int v2, float peso) {
+    if (g == NULL) return false;
+    if (v1 < 0 || v2 < 0 || v1 >= g->numVertices || v2 >= g->numVertices || v1 == v2) return false;
+
+
+    if (g->matriz[v1][v2] == true) {
+        printf("Essa aresta já existe");
+        return false;
+    }
+
+    // Grafo não direcionado
+    g->matriz[v1][v2] = peso;
+
+    g->numArestas++;
+    return true;
+}
+
+bool removeArestaMatriz(GrafoMatriz* g, int v1, int v2,float invalido) {
     if (g == NULL) return false;
     if (v1 < 0 || v2 < 0 || v1 >= g->numVertices || v2 >= g->numVertices) return false;
     if (g->matriz[v1][v2] == false) return false;
 
-    g->matriz[v1][v2] = false;
+    g->matriz[v1][v2] = invalido;
 
     // Caso o grafo seja direcionado não adiciona essa linha
-    g->matriz[v2][v1] = false;
+    g->matriz[v2][v1] = invalido;
 
     g->numArestas--;
     return true;
 
 }
 
-bool arestaExiste(Grafo* g, int v1, int v2) {
+bool removeArestaDirigidoMatriz(GrafoMatriz* g, int v1, int v2, float invalido) {
+    if (g == NULL) return false;
+    if (v1 < 0 || v2 < 0 || v1 >= g->numVertices || v2 >= g->numVertices) return false;
+    if (g->matriz[v1][v2] == false) return false;
+
+    g->matriz[v1][v2] = invalido;
+
+    g->numArestas--;
+    return true;
+}
+
+bool arestaExisteMatriz(GrafoMatriz* g, int v1, int v2) {
     if (g == NULL) return false;
     if (v1 < 0 || v2 < 0 || v1 >= g->numVertices || v2 >= g->numVertices) return false;
     if (g->matriz[v1][v2] == false) return false;
@@ -97,17 +163,17 @@ bool arestaExiste(Grafo* g, int v1, int v2) {
     return true;
 }
 
-int numeroDeVertices(Grafo* g) {
+int numeroDeVerticesMatriz(GrafoMatriz* g) {
     if (g != NULL) return g->numVertices;
     return -1;
 }
 
-int numeroDeArestas(Grafo* g) {
+int numeroDeArestasMatriz(GrafoMatriz* g) {
     if (g != NULL) return g->numArestas;
     return -1;
 }
 
-int numeroDeArestas2(Grafo* g) {
+int numeroDeArestasMatriz2(GrafoMatriz* g) {
     if (g == NULL) return -1;
     int x, y, arestas = 0;
     for (int x = 0; x < g->numVertices; x++)
@@ -120,7 +186,7 @@ int numeroDeArestas2(Grafo* g) {
     return arestas;
 }
 
-bool possuiVizinhos(Grafo* g, int v) {
+bool possuiVizinhosMatriz(GrafoMatriz* g, int v) {
     if (!g) return false;
     if (v < 0 || v >= g->numVertices) return false;
 
@@ -131,7 +197,7 @@ bool possuiVizinhos(Grafo* g, int v) {
     return false;
 }
 
-bool retornaGrauDoVertice(Grafo* g, int v) {
+bool retornaGrauDoVerticeMatriz(GrafoMatriz* g, int v) {
     if (!g) return false;
     if (v < 0 || v >= g->numVertices) return false;
 
@@ -144,7 +210,20 @@ bool retornaGrauDoVertice(Grafo* g, int v) {
 
     return grau;
 }
-void visitaEmProfundidade(Grafo* g, int atual, bool* visitado, int anterior) {
+bool retornaGrauDoVerticeDirigidoMatriz(GrafoMatriz* g, int v) {
+    if (!g) return false;
+    if (v < 0 || v >= g->numVertices) return false;
+
+    int x, grau = 0;
+    for (int x = 0; x < g->numVertices; x++) {
+            if (g->matriz[v][x]) grau++;
+        // Para grafo direcionado adiciona essa linha
+        if (g->matriz[x][v]) grau++;
+    }
+
+    return grau;
+}
+void visitaEmProfundidade(GrafoMatriz* g, int atual, bool* visitado, int anterior) {
     printf("Visitando vertice: %3i (anterior: %3i)\n", atual, anterior);
 
     visitado[atual] = true;
@@ -155,9 +234,7 @@ void visitaEmProfundidade(Grafo* g, int atual, bool* visitado, int anterior) {
     }
 }
 
-
-
-void buscaProfundidade(Grafo* g) {
+void buscaProfundidadeMatriz(GrafoMatriz* g) {
     if (!g || g->numVertices < 1) return;
     int x;
     bool* visitado = (bool*)malloc(sizeof(bool) * g->numVertices);
@@ -170,7 +247,7 @@ void buscaProfundidade(Grafo* g) {
     free(visitado);
 }
 
-void buscaProfundidadeCores(Grafo* g) {
+void buscaProfundidadeCoresMatriz(GrafoMatriz* g) {
     if (!g || g->numVertices < 1) return;
     int* cor = (int)malloc(sizeof(int) * g->numVertices);
     int* tDescoberta = (int)malloc(sizeof(int) * g->numVertices);

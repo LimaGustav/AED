@@ -1,6 +1,17 @@
 ﻿  MatrixAdjacencia.c
-C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\MatrixAdjacencia.c(117,12): warning C4101: 'y': unreferenced local variable
-C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\MatrixAdjacencia.c(117,9): warning C4101: 'x': unreferenced local variable
-C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\MatrixAdjacencia.c(132,9): warning C4101: 'x': unreferenced local variable
-C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\MatrixAdjacencia.c(143,9): warning C4101: 'x': unreferenced local variable
+C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\MatrixAdjacencia.c(121,12): warning C4101: 'y': unreferenced local variable
+C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\MatrixAdjacencia.c(121,9): warning C4101: 'x': unreferenced local variable
+C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\MatrixAdjacencia.c(136,9): warning C4101: 'x': unreferenced local variable
+C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\MatrixAdjacencia.c(147,9): warning C4101: 'x': unreferenced local variable
+C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\MatrixAdjacencia.c(184,57): warning C4311: 'type cast': pointer truncation from 'void *' to 'int'
+C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\MatrixAdjacencia.c(185,65): warning C4311: 'type cast': pointer truncation from 'void *' to 'int'
+C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\MatrixAdjacencia.c(186,62): warning C4311: 'type cast': pointer truncation from 'void *' to 'int'
+C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\MatrixAdjacencia.c(187,62): warning C4311: 'type cast': pointer truncation from 'void *' to 'int'
+C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\MatrixAdjacencia.c(188,42): warning C4311: 'type cast': pointer truncation from 'void *' to 'int'
+C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\MatrixAdjacencia.c(184,10): warning C4047: 'initializing': 'int *' differs in levels of indirection from 'int'
+C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\MatrixAdjacencia.c(185,10): warning C4047: 'initializing': 'int *' differs in levels of indirection from 'int'
+C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\MatrixAdjacencia.c(186,10): warning C4047: 'initializing': 'int *' differs in levels of indirection from 'int'
+C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\MatrixAdjacencia.c(187,10): warning C4047: 'initializing': 'int *' differs in levels of indirection from 'int'
+C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\MatrixAdjacencia.c(188,10): warning C4047: 'initializing': 'int *' differs in levels of indirection from 'int'
+C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\MatrixAdjacencia.c(191,9): warning C4101: 'x': unreferenced local variable
   MatrixAdjacencia.vcxproj -> C:\Users\OLIMPIADA2024\Desktop\AED\Grafos\MatrixAdjacencia\x64\Debug\MatrixAdjacencia.exe

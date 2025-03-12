@@ -131,6 +131,7 @@
     <ClCompile Include="SistemaUnificado.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ListaAdjacencia.h" />
     <ClInclude Include="MatrixAdjacencia.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

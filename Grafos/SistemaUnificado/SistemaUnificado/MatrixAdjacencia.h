@@ -1,41 +1,57 @@
 #ifndef _MATRIX_ADJACENCIA_H
 #define _MATRIX_ADJACENCIA_H
 
-typedef int bool;
+typedef float bool;
 typedef struct {
     int numVertices;
     int numArestas;
     bool** matriz;
-} Grafo;
-
-bool inicializaGrafo(Grafo* g, int vertices);
-
-bool exibeGrafo(Grafo* g);
-
-bool liberaGrafto(Grafo* g);
-
-bool insereAresta(Grafo* g, int v1, int v2);
-
-bool removeAresta(Grafo* g, int v1, int v2);
-
-bool arestaExiste(Grafo* g, int v1, int v2);
+} GrafoMatriz;
 
 
-int numeroDeVertices(Grafo* g);
 
-int numeroDeArestas(Grafo* g);
+bool inicializaGrafoMatriz(GrafoMatriz* g, int vertices,float invalido);
 
-int numeroDeArestas2(Grafo* g);
+bool exibeGrafoMatriz(GrafoMatriz* g);
 
-bool possuiVizinhos(Grafo* g, int v);
+bool liberaGraftoMatriz(GrafoMatriz* g);
 
-bool retornaGrauDoVertice(Grafo* g, int v);
+bool insereArestaMatriz(GrafoMatriz* g, int v1, int v2);
 
-void visitaEmProfundidade(Grafo* g, int atual, bool* visitado, int anterior);
+bool insereArestaDirigidoMatriz(GrafoMatriz* g, int v1, int v2);
 
-void buscaProfundidade(Grafo* g);
+/// <summary>
+/// Grafo ponderado não dirigido
+/// </summary>
+/// <param name="g"></param>
+/// <param name="v1"></param>
+/// <param name="v2"></param>
+/// <param name="peso"></param>
+/// <returns></returns>
+bool insereArestaPonderadoMatriz(GrafoMatriz* g, int v1, int v2, float peso);
 
-void buscaProfundidadeCores(Grafo* g);
+bool insereArestaDirigidoPonderadoMatriz(GrafoMatriz* g, int v1, int v2,float peso);
+
+bool removeArestaMatriz(GrafoMatriz* g, int v1, int v2,float invalido);
+bool removeArestaDirigidoMatriz(GrafoMatriz* g, int v1, int v2,float invalido);
+
+bool arestaExisteMatriz(GrafoMatriz* g, int v1, int v2);
+
+
+int numeroDeVerticesMatriz(GrafoMatriz* g);
+
+int numeroDeArestasMatriz(GrafoMatriz* g);
+
+int numeroDeArestasMatriz2(GrafoMatriz* g);
+
+bool possuiVizinhosMatriz(GrafoMatriz* g, int v);
+
+bool retornaGrauDoVerticeMatriz(GrafoMatriz* g, int v);
+bool retornaGrauDoVerticeDirigidoMatriz(GrafoMatriz* g, int v);
+
+void buscaProfundidadeMatriz(GrafoMatriz* g);
+
+void buscaProfundidadeCoresMatriz(GrafoMatriz* g);
 
 
 
