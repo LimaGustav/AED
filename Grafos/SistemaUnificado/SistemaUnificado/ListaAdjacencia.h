@@ -18,7 +18,7 @@ typedef struct {
     ElemLista** A;
 } GrafoLista;
 
-bool inicializaGrafoLista(GrafoLista* g, int vertices, float invalido);
+bool inicializaGrafoLista(GrafoLista* g, int vertices);
 
 bool exibeGrafoLista(GrafoLista* g);
 

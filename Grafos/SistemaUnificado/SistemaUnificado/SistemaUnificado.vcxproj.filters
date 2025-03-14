@@ -21,6 +21,9 @@
     <ClCompile Include="MatrixAdjacencia.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ListaAdjacencia.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MatrixAdjacencia.h">
